@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72d0fa87-60cd-4d2a-bdfe-001b447e7557" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ShiftsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ShiftsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ShiftsModelTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ShiftsModelTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ShiftModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShiftModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ShiftsModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShiftsModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/UserView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UserView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ShiftModelTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ShiftModelTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/ShiftsModelTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ShiftsModelTests.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,21 +28,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+            <state relative-caret-position="60">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/UserView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+              <folding>
+                <element signature="e#115#116#0" expanded="true" />
+                <element signature="e#160#161#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ShiftsModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-540">
+              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding>
+                <element signature="e#257#258#0" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
+                <element signature="e#421#422#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#597#598#0" expanded="true" />
+                <element signature="e#629#630#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,15 +91,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/test/java/ShiftsModelTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/misc/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/UserView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ShiftsModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/compiler.xml" />
       </list>
     </option>
   </component>
@@ -102,6 +143,19 @@
             <path>
               <item name="java-shift-recorder" type="b2602c69:ProjectViewProjectNode" />
               <item name="java-shift-recorder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java-shift-recorder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java-shift-recorder" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java-shift-recorder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java-shift-recorder" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -109,6 +163,9 @@
         </subPane>
       </pane>
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -122,7 +179,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="cryptogram" />
@@ -130,9 +187,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShiftsModelTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cryptogram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ShiftsModelTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cryptogram" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ShiftsModelTests" />
+      <option name="METHOD_NAME" value="makeSureThatTotalTimeIsBeingCalculatedCorrectly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ShiftsModelTests" />
+        <item itemvalue="JUnit.ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" />
       </list>
     </recent_temporary>
   </component>
@@ -149,6 +227,26 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="ShiftsModelTests_makeSureThatTotalTimeIsBeingCalculatedCorrectly - 2019.03.27 at 20h 13m 16s.xml">
+      <configuration name="ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShiftsModelTests_makeSureThatTotalTimeIsBeingCalculatedCorrectly - 2019.03.27 at 20h 13m 49s.xml">
+      <configuration name="ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShiftsModelTests_makeSureThatTotalTimeIsBeingCalculatedCorrectly - 2019.03.27 at 20h 14m 12s.xml">
+      <configuration name="ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShiftsModelTests_makeSureThatTotalTimeIsBeingCalculatedCorrectly - 2019.03.27 at 20h 14m 33s.xml">
+      <configuration name="ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShiftsModelTests_makeSureThatTotalTimeIsBeingCalculatedCorrectly - 2019.03.27 at 20h 18m 11s.xml">
+      <configuration name="ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShiftsModelTests - 2019.03.27 at 20h 18m 17s.xml">
+      <configuration name="ShiftsModelTests" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="1667" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
@@ -158,7 +256,7 @@
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24958494" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24958494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
@@ -166,7 +264,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32937366" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -180,15 +278,101 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Designer" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24958494" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="3" weight="0.32937366" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.32937366" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/misc/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ShiftModelTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ShiftsModelTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" column="93" lean-forward="true" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="93" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        <state relative-caret-position="60">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/UserView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+          <folding>
+            <element signature="e#115#116#0" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ShiftsModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#597#598#0" expanded="true" />
+            <element signature="e#629#630#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
