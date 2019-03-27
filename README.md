@@ -1,3 +1,17 @@
 # Java Shift Recorder
 
-An app designed to track the shifts that I will do over summer. It will record the number of hours that I have done, and work out how much money I am making!
+##### Road Map
+
+- [ ] Create and implement MVC design pattern
+    - [ ] Create shift Model
+         - [ ] Test
+    - [ ] Create User Controller
+    - [ ] Create User View
+    - [ ] Create Shifts Model
+    - [ ] Create User Controller
+    - [ ] Create User View
+ 
+- [ ] Incomplete task
+    - [ ] Sub-task 1
+    - [x] Sub-task 2
+    - [ ] Sub-task 3
