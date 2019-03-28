@@ -38,4 +38,13 @@ public class ShiftsModelTests {
         Assertions.assertEquals(testShiftsModel2.getTotalTimeWorked(),12);
 
     }
+
+    @Test
+    public void makeSureAFIleIsBeingCreated(){
+
+    }
+
+    @Test void makeSureThatAShiftCanNotBeDuplicatedInTheFile(){
+
+    }
 }

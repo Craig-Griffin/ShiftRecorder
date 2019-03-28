@@ -32,7 +32,7 @@ public class ShiftModel {
 
         } catch(Exception e){
 
-            System.out.println("An error has occured!!");
+            System.out.println("An Exception has been thrown suggesting that the supplied input is not of the right format");
         }
     }
 
@@ -69,6 +69,13 @@ public class ShiftModel {
         return duration;
     }
 
+    public String getStartFormat() {
+        return startFormat;
+    }
+
+    public String getFinishFormat() {
+        return finishFormat;
+    }
 }
 
 
