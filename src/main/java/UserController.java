@@ -33,6 +33,21 @@ public class UserController {
                 case "3":
                     view.displayTotalHoursWorked();
                     break;
+                 case "4":
+
+                     System.out.println("Enter a date [DD-MMM-YYYY]");
+                     String day = promptUser();
+                     System.out.println("Enter a START time in 24 hour notation");
+                     String startTime = promptUser();
+                     System.out.println("Enter a FINISH time in 24 hour notation");
+                     String finishTime = promptUser();
+
+                     System.out.println((day +" " + startTime+":00:00" ) + " " + (day +" " + finishTime+":00:00" ));
+
+                     allShifts.addShift(new ShiftModel((day +" " + startTime+":00:00" ), (day +" " + finishTime+":00:00" )));
+
+
+
                 default:
                     System.out.println("Not a valid input!!");
             }

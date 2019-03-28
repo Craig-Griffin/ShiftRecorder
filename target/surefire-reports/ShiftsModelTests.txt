@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: ShiftsModelTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in ShiftsModelTests
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.076 s <<< FAILURE! - in ShiftsModelTests
+makeSureShiftsAreBeingAddedToArrayList  Time elapsed: 0.062 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <4> but was: <2>
+	at ShiftsModelTests.makeSureShiftsAreBeingAddedToArrayList(ShiftsModelTests.java:19)
+
+makeSureThatTotalTimeIsBeingCalculatedCorrectly  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <26> but was: <8>
+	at ShiftsModelTests.makeSureThatTotalTimeIsBeingCalculatedCorrectly(ShiftsModelTests.java:35)
+
