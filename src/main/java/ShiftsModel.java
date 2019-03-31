@@ -87,7 +87,7 @@ public class ShiftsModel {
         double breakDeficit = getAllShifts().size() * BREAK_LENGTH;
         double totalTime = getTotalTimeWorked() - breakDeficit;
 
-        return totalTime * HOURLY_RATE;
+        return Math.round((totalTime * HOURLY_RATE) * 100.0) / 100.0;
     }
 
     /**
@@ -97,6 +97,8 @@ public class ShiftsModel {
     private ArrayList<ShiftModel> loadExistingShifts() {
 
             ArrayList < ShiftModel > temp = new ArrayList < > ();
+            String tempStart;
+            String tempEnd;
 
             try {
                 FileReader fileReader = new FileReader(SHIFT_FILE);
@@ -106,9 +108,11 @@ public class ShiftsModel {
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] tokens = line.split(" ");
 
+                    tempStart = tokens[0]+ " "+ tokens[1];
+                    tempEnd =  tokens[2]+ " "+ tokens[3];
 
-                    System.out.println(tokens[0]+ "  "+ tokens[1]);
-                   temp.add(new ShiftModel((tokens[0]+" "+tokens[1]), (tokens[2]+ " "+ tokens[3])));
+
+                   temp.add(new ShiftModel(tempStart,tempEnd));
 
 
                 }

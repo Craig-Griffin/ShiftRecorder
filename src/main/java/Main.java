@@ -2,7 +2,8 @@ public class Main {
 
     public static void main(String args[]) {
 
-        new UserController();
+       GUIUserController test = new GUIUserController();
+       test.main(args);
 
     }
 }

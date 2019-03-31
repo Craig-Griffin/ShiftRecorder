@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-public class UserController {
+public class CLIUserController {
 
     private ShiftsModel allShifts;
     private UserView view;
 
-    public UserController(){
+    public CLIUserController(){
         allShifts = new ShiftsModel();
         view = new UserView(allShifts);
 
@@ -48,6 +48,8 @@ public class UserController {
 
 
 
+                case "5":
+                case "6":System.exit(0);
                 default:
                     System.out.println("Not a valid input!!");
             }
