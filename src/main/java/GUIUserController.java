@@ -8,6 +8,10 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 
@@ -16,6 +20,8 @@ import javafx.stage.Stage;
 public class GUIUserController extends Application {
 
         private ShiftsModel shiftsModel = new ShiftsModel();
+
+        private static final String USERNAME = "Craig";
 
 
         // launch the application
@@ -27,8 +33,29 @@ public class GUIUserController extends Application {
             // create a scene
             Scene sc = new Scene(vb, 800, 500);
 
+
+            Text welcome = new Text("Welcome Back " + USERNAME);
+            welcome.setTextAlignment(TextAlignment.CENTER );
+            welcome.setFont(Font.font ("Verdana", 20));
+            welcome.setFill(Color.RED);
+
+            Text moneyEarned = new Text("\nTotal Earned: £" + shiftsModel.getTotalAmountEarned());
+            moneyEarned .setFont(Font.font ("Verdana", 15));
+            moneyEarned .setFill(Color.BLACK);
+
+            Text totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours");
+            totalTime .setFont(Font.font ("Verdana", 15));
+            totalTime .setFill(Color.BLACK);
+
+
+            vb.getChildren().add(welcome);
+            vb.getChildren().add(moneyEarned);
+            vb.getChildren().add(totalTime);
+
+
             // set the scene
             s.setScene(sc);
+
 
             s.show();
         }
