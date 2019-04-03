@@ -2,11 +2,13 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,7 +16,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-
+import java.net.Inet4Address;
+import java.text.SimpleDateFormat;
 
 
 public class GUIUserController extends Application {
@@ -28,41 +31,235 @@ public class GUIUserController extends Application {
         public void start(Stage s)
         {
             s.setTitle("Java Shift Controller");
+
             VBox vb = new VBox(createMenuBar());
+
 
             // create a scene
             Scene sc = new Scene(vb, 800, 500);
 
+            //Create Title
+            VBox titleVB = new VBox();
+            titleVB.setAlignment(Pos.CENTER);
+            Label title = new Label("Java Shift Recorder");
+            title.setFont(Font.font ("Verdana", 30));
+            title.setTextFill(Color.BLACK);
+            titleVB.getChildren().add(title);
+            vb.getChildren().add(titleVB);
 
-            Text welcome = new Text("Welcome Back " + USERNAME);
+            VBox upcomingShiftsVB = new VBox();
+
+           upcomingShiftsVB.setAlignment(Pos.BASELINE_RIGHT);
+            Text welcome = new Text("\nUpcoming Shifts");
             welcome.setTextAlignment(TextAlignment.CENTER );
             welcome.setFont(Font.font ("Verdana", 20));
-            welcome.setFill(Color.RED);
+            welcome.setFill(Color.GREEN);
 
-            Text moneyEarned = new Text("\nTotal Earned: £" + shiftsModel.getTotalAmountEarned());
-            moneyEarned .setFont(Font.font ("Verdana", 15));
-            moneyEarned .setFill(Color.BLACK);
-
-            Text totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours");
-            totalTime .setFont(Font.font ("Verdana", 15));
-            totalTime .setFill(Color.BLACK);
+            upcomingShiftsVB.getChildren().add(welcome);
+            vb.getChildren().add(upcomingShiftsVB);
 
 
-            vb.getChildren().add(welcome);
-            vb.getChildren().add(moneyEarned);
-            vb.getChildren().add(totalTime);
 
+
+
+
+
+
+
+
+
+            introText(vb);
+            EnterShift(vb);
 
             // set the scene
             s.setScene(sc);
 
-
+            s.setResizable(false);
             s.show();
         }
 
         public static void main(String args[]){
         launch(args);
     }
+
+
+
+    public void introText(VBox vb){
+        Text welcome = new Text("Welcome Back " + USERNAME + "...");
+        welcome.setFont(Font.font ("Verdana", 20));
+        welcome.setFill(Color.BLUE);
+
+        Text moneyEarned = new Text("\nTotal Earned: £" + shiftsModel.getTotalAmountEarned());
+        moneyEarned .setFont(Font.font ("Verdana", 15));
+        moneyEarned .setFill(Color.BLACK);
+
+        Text totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours\n");
+        totalTime .setFont(Font.font ("Verdana", 15));
+        totalTime .setFill(Color.BLACK);
+
+        Text addShiftTxt = new Text("\nAdd a New Shift...");
+        addShiftTxt.setTextAlignment(TextAlignment.CENTER );
+        addShiftTxt.setFont(Font.font ("Verdana", 20));
+        addShiftTxt.setFill(Color.BLUE);
+
+
+        vb.getChildren().add(welcome);
+        vb.getChildren().add(moneyEarned);
+        vb.getChildren().add(totalTime);
+        vb.getChildren().add(addShiftTxt);
+    }
+
+    public void EnterShift(VBox vb){
+        Text lblDate = new Text("Shift Date:  ");
+        lblDate.setFont(Font.font ("Verdana", 15));
+        lblDate .setFill(Color.BLACK);
+        TextField txtFieldDate = new TextField ("DD-MMM-YYYY");
+        //textField.setPromptText();
+        HBox hb = new HBox();
+        hb.getChildren().addAll(lblDate, txtFieldDate);
+        hb.setSpacing(10);
+        vb.getChildren().add(hb);
+
+        Text lblSrtTme = new Text("Start Time: ");
+        lblSrtTme.setFont(Font.font ("Verdana", 15));
+        lblSrtTme .setFill(Color.BLACK);
+        TextField txtFieldStartTime = new TextField ("HH");
+        //textField.setPromptText("HH");
+        HBox hb2 = new HBox();
+        hb2.getChildren().addAll(lblSrtTme, txtFieldStartTime);
+        hb2.setSpacing(10);
+        vb.getChildren().add(hb2);
+
+
+        Text lblFinishTme = new Text("Finish Time:  ");
+        lblFinishTme.setFont(Font.font ("Verdana", 15));
+        lblFinishTme .setFill(Color.BLACK);
+        TextField txtFieldFinishTime = new TextField ("HH");
+        HBox hb3 = new HBox();
+        hb3.getChildren().addAll(lblFinishTme, txtFieldFinishTime);
+        hb.setSpacing(10);
+        vb.getChildren().add(hb3);
+
+        //Defining the Submit button
+        HBox hb4 = new HBox();
+        Button submit = new Button("Submit");
+        submit.setFont(Font.font ("Verdana", 15));
+
+        hb4.getChildren().add(submit);
+
+        //Defining the Clear button
+        Button clear = new Button("Clear");
+      clear.setFont(Font.font ("Verdana", 15));
+        hb4.getChildren().add(clear);
+        hb.setSpacing(10);
+        vb.getChildren().add(hb4);
+
+        //Defining a empty label object
+        Label label = new Label();
+        vb.getChildren().add(label);
+
+        EventHandler<ActionEvent> eventClear = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                txtFieldDate.clear();
+                txtFieldStartTime.clear();
+                txtFieldFinishTime.clear();
+                label.setText("");
+            }
+        };
+
+        clear.setOnAction(eventClear);
+
+        EventHandler<ActionEvent> eventSubmit = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                if ((txtFieldDate.getText() != null && !txtFieldStartTime.getText().isEmpty()) && !txtFieldFinishTime.getText().isEmpty()) {
+
+                    SimpleDateFormat formatDate = new SimpleDateFormat("dd-MMM-yyyy");
+                    SimpleDateFormat formatTime = new SimpleDateFormat("HH");
+                    String date = txtFieldDate.getText();
+                    String startTime = txtFieldStartTime.getText();
+                    String finishTime = txtFieldFinishTime.getText();
+
+                    boolean dateError = false;
+                    boolean timeError = false;
+
+
+                    try {
+                        formatDate.parse(date);
+
+                    } catch (Exception ex) {
+                        dateError = true;
+                        label.setText("Error When Parsing Date");
+                        label.setFont(Font.font("Verdana", 15));
+                        label.setTextFill(Color.RED);
+                    }
+
+                    try {
+                        formatTime.parse(startTime);
+                        formatTime.parse(finishTime);
+
+                        Integer intStartTime = Integer.parseInt(startTime);
+                        Integer intFinishTime = Integer.parseInt(finishTime);
+
+
+                        if ((intStartTime < 0 || intStartTime > 24) || (intFinishTime < 0 || intFinishTime > 24)) {
+                            throw new Exception();
+
+                        }
+                    } catch (Exception ex) {
+                        timeError = true;
+                        label.setText("Error When Parsing Time");
+                        label.setFont(Font.font("Verdana", 15));
+                        label.setTextFill(Color.RED);
+                    }
+
+
+                    if (!dateError && !timeError) {
+                        label.setText("Shift added Successfully!");
+                        label.setFont(Font.font("Verdana", 15));
+                        label.setTextFill(Color.GREEN);
+
+
+                        shiftsModel.addShift(new ShiftModel((date + " " + startTime + ":00:00"), (date + " " + finishTime + ":00:00")));
+
+                        txtFieldDate.clear();
+                        txtFieldStartTime.clear();
+                        txtFieldFinishTime.clear();
+
+                    }
+                    dateError = false;
+                    timeError = false;
+
+
+                } else {
+                    label.setText("One or more fields is empty??");
+                    label.setFont(Font.font("Verdana", 15));
+                    label.setTextFill(Color.RED);
+                }
+
+            }
+
+        };
+
+        submit.setOnAction(eventSubmit);
+
+
+        //Setting an action for the Submit button
+        //submit.setOnAction(new EventHandler<ActionEvent>() {
+
+            /*
+
+        });
+        */
+
+//Setting an action for the Clear button
+
+
+        }
+
+
+
 
     public MenuBar createMenuBar(){
         MenuBar mb = new MenuBar();
@@ -161,20 +358,3 @@ public class GUIUserController extends Application {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
