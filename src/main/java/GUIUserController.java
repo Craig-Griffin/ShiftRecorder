@@ -32,32 +32,51 @@ public class GUIUserController extends Application {
         {
             s.setTitle("Java Shift Controller");
 
+            HBox mainHB = new HBox();
+
             VBox vb = new VBox(createMenuBar());
+
+            VBox vbLeft = new VBox();
 
 
             // create a scene
-            Scene sc = new Scene(vb, 800, 500);
+            Scene sc = new Scene(vb, 800, 350);
 
             //Create Title
             VBox titleVB = new VBox();
             titleVB.setAlignment(Pos.CENTER);
             Label title = new Label("Java Shift Recorder");
+            Label emp = new Label("");
             title.setFont(Font.font ("Verdana", 30));
             title.setTextFill(Color.BLACK);
             titleVB.getChildren().add(title);
             vb.getChildren().add(titleVB);
+            vb.getChildren().add(emp);
 
             VBox upcomingShiftsVB = new VBox();
 
            upcomingShiftsVB.setAlignment(Pos.BASELINE_RIGHT);
-            Text welcome = new Text("\nUpcoming Shifts");
+
+            Text welcome = new Text("This Weeks Shifts...");
+            Text empty = new Text(" ");
             welcome.setTextAlignment(TextAlignment.CENTER );
             welcome.setFont(Font.font ("Verdana", 20));
+
             welcome.setFill(Color.GREEN);
 
+            upcomingShiftsVB.setAlignment(Pos.BASELINE_LEFT);
             upcomingShiftsVB.getChildren().add(welcome);
+            upcomingShiftsVB.getChildren().add(empty);
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Monday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Tuesday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Wednesday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Thursday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Friday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Saturday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Sunday"));
             vb.getChildren().add(upcomingShiftsVB);
 
+            vb.getChildren().add(mainHB);
 
 
 
@@ -67,9 +86,13 @@ public class GUIUserController extends Application {
 
 
 
+            mainHB.setSpacing(200);
+            mainHB.getChildren().addAll(vbLeft,upcomingShiftsVB );
 
-            introText(vb);
-            EnterShift(vb);
+
+            introText(vbLeft );
+            EnterShift(vbLeft );
+
 
             // set the scene
             s.setScene(sc);
@@ -80,6 +103,15 @@ public class GUIUserController extends Application {
 
         public static void main(String args[]){
         launch(args);
+    }
+
+    public Text createWeekdayText(String nameWeekDay){
+        Text weekday = new Text(nameWeekDay + ":"+ " OFF");
+        weekday.setTextAlignment(TextAlignment.CENTER );
+        weekday.setFont(Font.font ("Verdana", 20));
+        weekday.setFill(Color.BLACK);
+
+        return weekday;
     }
 
 

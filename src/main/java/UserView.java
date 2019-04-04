@@ -36,6 +36,14 @@ public class UserView {
                 "=>");
     }
 
+    public void displayDaysOfWeek(){
+        for(ShiftModel x : shiftsModel.getAllShifts()){
+
+            System.out.println(x.getWeekDay());
+
+        }
+    }
+
 
 
 

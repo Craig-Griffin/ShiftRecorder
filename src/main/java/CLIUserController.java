@@ -9,6 +9,8 @@ public class CLIUserController {
         allShifts = new ShiftsModel();
         view = new UserView(allShifts);
 
+        view.displayDaysOfWeek();
+
         mainLoop();
     }
 

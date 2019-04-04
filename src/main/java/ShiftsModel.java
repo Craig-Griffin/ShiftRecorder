@@ -90,6 +90,21 @@ public class ShiftsModel {
         return Math.round((totalTime * HOURLY_RATE) * 100.0) / 100.0;
     }
 
+    public ArrayList<String[]> splitIntoWeeks(){
+        String[] week = new String[6];
+
+        ArrayList<String[]> weeks = new ArrayList<>();
+
+        for (ShiftModel date : allShifts){
+            String currentDate = date.getWeekDay();
+
+            if(currentDate.equals("Monday")){
+                    System.out.println("do shit");
+            }
+        }
+        return weeks;
+    }
+
     /**
      * Load all previous shift information from the file
      * @return an ArrayList containing all previous shift data

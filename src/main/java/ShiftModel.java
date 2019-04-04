@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -67,6 +68,36 @@ public class ShiftModel {
     public int getDuration(){
         int duration = getFinishTime() - getStartTime();
         return duration;
+    }
+
+
+    public String getWeekDay(){
+        Calendar c = Calendar.getInstance();
+        c.setTime(startTime);
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+        String weekDay ="";
+
+
+        switch(dayOfWeek){
+            case 1: weekDay = "Sunday";
+                    break;
+            case 2: weekDay = "Monday";
+                break;
+            case 3: weekDay = "Tuesday";
+                break;
+            case 4: weekDay = "Wednesday";
+                break;
+            case 5: weekDay = "Thursday";
+                break;
+            case 6: weekDay = "Friday";
+                break;
+            case 7: weekDay = "Saturday";
+                break;
+        }
+
+
+
+        return weekDay;
     }
 
     public String getStartFormat() {
