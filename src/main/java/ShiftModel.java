@@ -42,6 +42,10 @@ public class ShiftModel {
         return startTime.toString();
     }
 
+    public Date getDateObject(){
+        return startTime;
+    }
+
     /**
      * Getter method for start time of a shift
      * @return the start time of a shift
@@ -94,9 +98,6 @@ public class ShiftModel {
             case 7: weekDay = "Saturday";
                 break;
         }
-
-
-
         return weekDay;
     }
 

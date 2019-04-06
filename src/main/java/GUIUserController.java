@@ -276,18 +276,6 @@ public class GUIUserController extends Application {
 
         submit.setOnAction(eventSubmit);
 
-
-        //Setting an action for the Submit button
-        //submit.setOnAction(new EventHandler<ActionEvent>() {
-
-            /*
-
-        });
-        */
-
-//Setting an action for the Clear button
-
-
         }
 
 

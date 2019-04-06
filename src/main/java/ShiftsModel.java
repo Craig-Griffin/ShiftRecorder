@@ -1,5 +1,10 @@
 import java.io.*;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+
 
 public class ShiftsModel {
 
@@ -16,6 +21,7 @@ public class ShiftsModel {
      */
     public ShiftsModel(){
         allShifts = loadExistingShifts();
+
 
         File shiftFile = new File(SHIFT_FILE);
 
@@ -90,19 +96,100 @@ public class ShiftsModel {
         return Math.round((totalTime * HOURLY_RATE) * 100.0) / 100.0;
     }
 
-    public ArrayList<String[]> splitIntoWeeks(){
-        String[] week = new String[6];
+    public HashMap<Date,ArrayList<String>> splitIntoWeeks() {
 
-        ArrayList<String[]> weeks = new ArrayList<>();
+        HashMap<Date, ArrayList<String>> splitToWeeks = new HashMap<>();
+        ArrayList<Date> weekStartsAL = loadWeekStarts();
 
-        for (ShiftModel date : allShifts){
-            String currentDate = date.getWeekDay();
+        int weekNumber =1;
+        int max = 0; //Holds length of all shifts(i.e. total number of shifts)
 
-            if(currentDate.equals("Monday")){
-                    System.out.println("do shit");
+        Date currentDate = allShifts.get(max).getDateObject(); // Current date being looked at
+
+        int  counter = getClosestMonday(weekStartsAL, currentDate);
+
+        while (max != allShifts.size()) {
+
+                ArrayList<Date> currentWeek = new ArrayList<>();
+                while (currentDate.before(weekStartsAL.get(counter+1))) {
+
+                    currentWeek.add(currentDate);
+                    max++;
+                    if (currentDate.equals(weekStartsAL.get(counter + 1)) || max >= allShifts.size()) {
+                        break;
+                    }
+                    currentDate = allShifts.get(max).getDateObject();
+                }
+                System.out.println("Week:" +   weekNumber + currentWeek);
+
+                counter++;
+                weekNumber++;
+
             }
+        return splitToWeeks;
+    }
+
+    private ArrayList<String> indentifyDayOfWeek(ArrayList<Date> dateFormatArray){
+        ArrayList<String> identifyWeekDay = new ArrayList<>();
+
+        /*
+        for(Date x: dateFormatArray){
+            x.get
         }
-        return weeks;
+        */
+
+
+
+
+
+
+        return identifyWeekDay;
+    }
+
+
+
+
+
+
+    private int getClosestMonday(ArrayList<Date> weekStarts, Date currentDate) {
+
+        int counter=0;
+        int pos=0;
+
+        while (weekStarts.get(pos).before(currentDate)) {
+            counter++;
+            pos++;
+
+        }
+        return counter-1;
+    }
+
+
+    public ArrayList<Date> loadWeekStarts(){
+
+        ArrayList<Date> weekStarts = new ArrayList<>();
+
+        ShiftModel startDate = new  ShiftModel("27-Mar-2017 16:00:00","27-Mar-2017 20:00:00");
+        ShiftModel endDate = new ShiftModel("27-Mar-2020 16:00:00","27-Mar-2020 20:00:00");
+
+        Calendar calendarStart = Calendar.getInstance();
+        Calendar calendarEnd = Calendar.getInstance();
+
+        calendarStart.setTime(startDate.getDateObject());
+        calendarEnd.setTime(endDate.getDateObject());
+
+        while(!calendarStart.equals(calendarEnd) ) {
+            if(calendarStart.getTime().getDay() == 1){
+                weekStarts.add(calendarStart.getTime());
+            }
+            calendarStart.add(Calendar.DATE, 1);
+
+        }
+        return weekStarts;
+
+
+
+
     }
 
     /**

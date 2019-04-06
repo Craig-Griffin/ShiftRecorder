@@ -7,12 +7,9 @@ public class Main {
        test.main(args);
        */
 
-        ShiftModel testShift1 = new ShiftModel("14-May-1999 16:00:00","27-Mar-2019 20:00:00");
+       ShiftsModel x = new ShiftsModel();
 
-
-        new CLIUserController();
-
-
+       x.splitIntoWeeks();
 
     }
 }
