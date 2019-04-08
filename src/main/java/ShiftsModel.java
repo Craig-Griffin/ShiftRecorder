@@ -275,24 +275,28 @@ public class ShiftsModel {
             String tempStart;
             String tempEnd;
 
-            try {
-                FileReader fileReader = new FileReader(SHIFT_FILE);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                String line = null;
+            File f = new File(SHIFT_FILE);
+            if(f.length() != 0) {
 
-                while ((line = bufferedReader.readLine()) != null) {
-                    String[] tokens = line.split(" ");
+                try {
+                    FileReader fileReader = new FileReader(SHIFT_FILE);
+                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                    String line = null;
 
-                    tempStart = tokens[0]+ " "+ tokens[1];
-                    tempEnd =  tokens[2]+ " "+ tokens[3];
+                    while ((line = bufferedReader.readLine()) != null) {
+                        String[] tokens = line.split(" ");
+
+                        tempStart = tokens[0] + " " + tokens[1];
+                        tempEnd = tokens[2] + " " + tokens[3];
 
 
-                   temp.add(new ShiftModel(tempStart,tempEnd));
+                        temp.add(new ShiftModel(tempStart, tempEnd));
 
 
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
 
             return temp;
@@ -346,6 +350,8 @@ public class ShiftsModel {
         while(current.after(weekStarts.get(i))){
             i++;
         }
+
+        i=i-1;
 
         String goodFormat = "" + weekStarts.get(i).getDate()+"/"+(weekStarts.get(i).getMonth()+1)+"/19";
 
