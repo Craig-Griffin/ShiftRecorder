@@ -110,44 +110,117 @@ public class ShiftsModel {
 
         while (max != allShifts.size()) {
 
-                ArrayList<Date> currentWeek = new ArrayList<>();
-                while (currentDate.before(weekStartsAL.get(counter+1))) {
+                ArrayList<ShiftModel> currentWeek = new ArrayList<>();
 
-                    currentWeek.add(currentDate);
+                Date weekStart = weekStartsAL.get(counter);
+                Date NextWeekStart = weekStartsAL.get(counter+1);
+
+            if(currentDate.equals(NextWeekStart))    {
+                currentWeek.add(allShifts.get(max));
+            }
+
+            while (currentDate.before(NextWeekStart )) {
+
+                    currentWeek.add(allShifts.get(max));
+
                     max++;
-                    if (currentDate.equals(weekStartsAL.get(counter + 1)) || max >= allShifts.size()) {
+                    if (currentDate.after(NextWeekStart ) || max == allShifts.size()) {
                         break;
                     }
                     currentDate = allShifts.get(max).getDateObject();
-                }
-                System.out.println("Week:" +   weekNumber + currentWeek);
 
+
+
+                }
+
+
+            splitToWeeks.put(weekStartsAL.get(counter),indentifyDayOfWeek(currentWeek));
                 counter++;
-                weekNumber++;
+
+
 
             }
         return splitToWeeks;
     }
 
-    private ArrayList<String> indentifyDayOfWeek(ArrayList<Date> dateFormatArray){
-        ArrayList<String> identifyWeekDay = new ArrayList<>();
+    public ArrayList<String> indentifyDayOfWeek(ArrayList<ShiftModel> dateFormatArray){
 
-        /*
-        for(Date x: dateFormatArray){
-            x.get
+        HashMap<String,String> identifyWeekDay = new HashMap<>();
+
+        ArrayList<String> weekDayArr = new ArrayList<>();
+
+
+        identifyWeekDay.put("Monday", "OFF");
+        identifyWeekDay.put("Tuesday","OFF");
+        identifyWeekDay.put("Wednesday", "OFF");
+        identifyWeekDay.put("Thursday","OFF");
+        identifyWeekDay.put("Friday", "OFF");
+        identifyWeekDay.put("Saturday","OFF");
+        identifyWeekDay.put("Sunday","OFF");
+
+
+        for(ShiftModel x: dateFormatArray){
+
+           int dayOfWeek = x.getDateObject().getDay();
+
+            switch(dayOfWeek){
+
+                case 1: identifyWeekDay.replace("Monday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+                case 2: identifyWeekDay.replace("Tuesday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+                case 3: identifyWeekDay.replace("Wednesday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+                case 4: identifyWeekDay.replace("Thursday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+                case 5: identifyWeekDay.replace("Friday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+                case 6: identifyWeekDay.replace("Saturday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+                case 0: identifyWeekDay.replace("Sunday", x.getStartTime() + "-" + x.getFinishTime());
+                    break;
+            }
+
         }
-        */
 
+        weekDayArr.add(identifyWeekDay.get("Monday"));
+        weekDayArr.add(identifyWeekDay.get("Tuesday"));
+        weekDayArr.add(identifyWeekDay.get("Wednesday"));
+        weekDayArr.add(identifyWeekDay.get("Thursday"));
+        weekDayArr.add(identifyWeekDay.get("Friday"));
+        weekDayArr.add(identifyWeekDay.get("Saturday"));
+        weekDayArr.add(identifyWeekDay.get("Sunday"));
 
-
-
-
-
-        return identifyWeekDay;
+        return weekDayArr;
     }
 
 
 
+    public Date getCurrentWeekMonday(){
+
+        Date current = new Date();
+        ArrayList<Date> weekStartsAL = loadWeekStarts();
+
+        int i = 0;
+        while(current.after(weekStartsAL.get(i))){
+            i++;
+        }
+
+        return weekStartsAL.get(i-1);
+    }
+
+    public Date getCurrentWeekMondayTest(int counter){
+
+        Date current = new Date();
+        ArrayList<Date> weekStartsAL = loadWeekStarts();
+
+        int i = 0;
+        while(current.after(weekStartsAL.get(i))){
+            i++;
+        }
+
+        return weekStartsAL.get(i-counter);
+    }
 
 
 
@@ -179,7 +252,7 @@ public class ShiftsModel {
         calendarEnd.setTime(endDate.getDateObject());
 
         while(!calendarStart.equals(calendarEnd) ) {
-            if(calendarStart.getTime().getDay() == 1){
+            if(calendarStart.getTime().getDay() == 0){
                 weekStarts.add(calendarStart.getTime());
             }
             calendarStart.add(Calendar.DATE, 1);
@@ -245,6 +318,41 @@ public class ShiftsModel {
         } catch (IOException ex) {
             System.out.println("Error");
         }
+    }
+
+    public String dateFormatedForGUI(){
+        ArrayList<Date> weekStarts = new ArrayList<>();
+
+        ShiftModel startDate = new  ShiftModel("27-Mar-2017 16:00:00","27-Mar-2017 20:00:00");
+        ShiftModel endDate = new ShiftModel("27-Mar-2020 16:00:00","27-Mar-2020 20:00:00");
+
+        Calendar calendarStart = Calendar.getInstance();
+        Calendar calendarEnd = Calendar.getInstance();
+
+        calendarStart.setTime(startDate.getDateObject());
+        calendarEnd.setTime(endDate.getDateObject());
+
+        while(!calendarStart.equals(calendarEnd) ) {
+            if(calendarStart.getTime().getDay() == 1){
+                weekStarts.add(calendarStart.getTime());
+            }
+            calendarStart.add(Calendar.DATE, 1);
+
+        }
+
+        Date current = new Date();
+
+        int i = 0;
+        while(current.after(weekStarts.get(i))){
+            i++;
+        }
+
+        String goodFormat = "" + weekStarts.get(i).getDate()+"/"+(weekStarts.get(i).getMonth()+1)+"/19";
+
+        return goodFormat;
+
+
+
     }
 
 

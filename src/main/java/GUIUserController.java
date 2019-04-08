@@ -18,11 +18,14 @@ import javafx.stage.Stage;
 
 import java.net.Inet4Address;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class GUIUserController extends Application {
 
         private ShiftsModel shiftsModel = new ShiftsModel();
+        private Date weekStart = shiftsModel.getCurrentWeekMonday();
+        //private Date weekStart = shiftsModel.getCurrentWeekMondayTest(0);
 
         private static final String USERNAME = "Craig";
 
@@ -57,9 +60,9 @@ public class GUIUserController extends Application {
 
            upcomingShiftsVB.setAlignment(Pos.BASELINE_RIGHT);
 
-            Text welcome = new Text("This Weeks Shifts...");
+            Text welcome = new Text("This Weeks Shifts. (w/c: " + shiftsModel.dateFormatedForGUI()+")");
             Text empty = new Text(" ");
-            welcome.setTextAlignment(TextAlignment.CENTER );
+            welcome.setTextAlignment(TextAlignment.LEFT );
             welcome.setFont(Font.font ("Verdana", 20));
 
             welcome.setFill(Color.GREEN);
@@ -67,13 +70,13 @@ public class GUIUserController extends Application {
             upcomingShiftsVB.setAlignment(Pos.BASELINE_LEFT);
             upcomingShiftsVB.getChildren().add(welcome);
             upcomingShiftsVB.getChildren().add(empty);
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Monday"));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Tuesday"));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Wednesday"));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Thursday"));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Friday"));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Saturday"));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Sunday"));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Monday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(0)));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Tuesday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(1)));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Wednesday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(2)));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Thursday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(3)));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Friday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(4)));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Saturday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(5)));
+            upcomingShiftsVB.getChildren().add(createWeekdayText("Sunday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(6)));
             vb.getChildren().add(upcomingShiftsVB);
 
             vb.getChildren().add(mainHB);
@@ -106,7 +109,7 @@ public class GUIUserController extends Application {
     }
 
     public Text createWeekdayText(String nameWeekDay){
-        Text weekday = new Text(nameWeekDay + ":"+ " OFF");
+        Text weekday = new Text(nameWeekDay);
         weekday.setTextAlignment(TextAlignment.CENTER );
         weekday.setFont(Font.font ("Verdana", 20));
         weekday.setFill(Color.BLACK);
