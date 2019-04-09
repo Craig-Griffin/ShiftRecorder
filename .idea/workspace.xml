@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8b82c05-1d18-46ec-adfa-2443b2e0fc6a" name="Default Changelist" comment="" />
+    <list default="true" id="d8b82c05-1d18-46ec-adfa-2443b2e0fc6a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUIUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUIUserController.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GUIUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="289">
+              <caret line="197" lean-forward="true" selection-start-line="197" selection-end-line="197" />
             </state>
           </provider>
         </entry>
@@ -47,6 +49,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -55,10 +62,10 @@
         <option value="$PROJECT_DIR$/src/main/java/CLIUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ShiftModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/ShiftsModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GUIUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/ImportExisitingShifts.java" />
         <option value="$PROJECT_DIR$/shift_file.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/GUIUserController.java" />
       </list>
     </option>
   </component>
@@ -148,7 +155,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554806933577" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554812368439" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunDashboard">
@@ -211,14 +218,14 @@
       <window_info id="Favorites" order="6" sideWeight="0.50180507" side_tool="true" weight="0.12100213" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49946696" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.84008527" visible="true" weight="0.2979415" />
+      <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.4989339" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.84008527" weight="0.2979415" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49626866" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.15991472" side_tool="true" visible="true" weight="0.2979415" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" visible="true" weight="0.2979415" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.35980812" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -483,8 +490,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GUIUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="289">
+          <caret line="197" lean-forward="true" selection-start-line="197" selection-end-line="197" />
         </state>
       </provider>
     </entry>

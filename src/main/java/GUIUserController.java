@@ -43,12 +43,12 @@ public class GUIUserController extends Application {
 
 
             // create a scene
-            Scene sc = new Scene(vb, 800, 350);
+            Scene sc = new Scene(vb, 800, 365);
 
             //Create Title
             VBox titleVB = new VBox();
             titleVB.setAlignment(Pos.CENTER);
-            Label title = new Label("Java Shift Recorder");
+            Label title = new Label("Morrisons Shift Recorder");
             Label emp = new Label("");
             title.setFont(Font.font ("Verdana", 30));
             title.setTextFill(Color.BLACK);
@@ -56,43 +56,9 @@ public class GUIUserController extends Application {
             vb.getChildren().add(titleVB);
             vb.getChildren().add(emp);
 
-            VBox upcomingShiftsVB = new VBox();
-
-           upcomingShiftsVB.setAlignment(Pos.BASELINE_RIGHT);
-
-            Text welcome = new Text("This Weeks Shifts (w/c: " + shiftsModel.dateFormatedForGUI()+")");
-            Text empty = new Text(" ");
-            welcome.setTextAlignment(TextAlignment.LEFT );
-            welcome.setFont(Font.font ("Verdana", 20));
-
-            welcome.setFill(Color.GREEN);
-
-            upcomingShiftsVB.setAlignment(Pos.BASELINE_LEFT);
-            upcomingShiftsVB.getChildren().add(welcome);
-            upcomingShiftsVB.getChildren().add(empty);
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Monday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(0)));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Tuesday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(1)));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Wednesday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(2)));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Thursday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(3)));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Friday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(4)));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Saturday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(5)));
-            upcomingShiftsVB.getChildren().add(createWeekdayText("Sunday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(6)));
-            vb.getChildren().add(upcomingShiftsVB);
-
             vb.getChildren().add(mainHB);
-
-
-
-
-
-
-
-
-
             mainHB.setSpacing(200);
-            mainHB.getChildren().addAll(vbLeft,upcomingShiftsVB );
-
-
+            mainHB.getChildren().addAll(vbLeft,buildWorkingWeek());
             introText(vbLeft );
             EnterShift(vbLeft );
 
@@ -106,6 +72,59 @@ public class GUIUserController extends Application {
 
         public static void main(String args[]){
         launch(args);
+    }
+
+
+    public VBox buildWorkingWeek(){
+        VBox upcomingShiftsVB = new VBox();
+        upcomingShiftsVB.setAlignment(Pos.BASELINE_RIGHT);
+
+        Text welcome = new Text("This Weeks Shifts (w/c: " + shiftsModel.dateFormatedForGUI()+")");
+        Text empty = new Text(" ");
+        welcome.setTextAlignment(TextAlignment.LEFT );
+        welcome.setFont(Font.font ("Verdana", 20));
+
+        welcome.setFill(Color.GREEN);
+
+        //Defining the Update button
+        HBox hb4 = new HBox();
+        Button update = new Button("Update");
+        update.setFont(Font.font ("Verdana", 15));
+
+        hb4.getChildren().add(update);
+
+        //Defining the Previous button
+        Button previous = new Button("Previous Week");
+        previous.setFont(Font.font ("Verdana", 15));
+        hb4.getChildren().add(previous);
+
+        //Defining the next button
+        Button next = new Button("Next Week");
+        next.setFont(Font.font ("Verdana", 15));
+        hb4.getChildren().add(next);
+
+
+        //Defining a empty label object
+        Label label = new Label();
+
+        Label emp = new Label("");
+
+
+        upcomingShiftsVB.setAlignment(Pos.BASELINE_LEFT);
+        upcomingShiftsVB.getChildren().add(welcome);
+        upcomingShiftsVB.getChildren().add(empty);
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Monday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(0)));
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Tuesday:   " + shiftsModel.splitIntoWeeks().get(weekStart).get(1)));
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Wednesday: " + shiftsModel.splitIntoWeeks().get(weekStart).get(2)));
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Thursday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(3)));
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Friday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(4)));
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Saturday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(5)));
+        upcomingShiftsVB.getChildren().add(createWeekdayText("Sunday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(6)));
+        upcomingShiftsVB.getChildren().add(emp);
+        upcomingShiftsVB.getChildren().add(hb4);
+        upcomingShiftsVB.getChildren().add(label);
+
+        return upcomingShiftsVB;
     }
 
     public Text createWeekdayText(String nameWeekDay){
@@ -175,6 +194,11 @@ public class GUIUserController extends Application {
         hb.setSpacing(10);
         vb.getChildren().add(hb3);
 
+        Label emp = new Label("");
+
+
+        vb.getChildren().add(emp);
+
         //Defining the Submit button
         HBox hb4 = new HBox();
         Button submit = new Button("Submit");
@@ -225,7 +249,7 @@ public class GUIUserController extends Application {
 
                     } catch (Exception ex) {
                         dateError = true;
-                        label.setText("Error When Parsing Date");
+                        label.setText("Error when reading date!");
                         label.setFont(Font.font("Verdana", 15));
                         label.setTextFill(Color.RED);
                     }
@@ -244,7 +268,7 @@ public class GUIUserController extends Application {
                         }
                     } catch (Exception ex) {
                         timeError = true;
-                        label.setText("Error When Parsing Time");
+                        label.setText("Error when reading time");
                         label.setFont(Font.font("Verdana", 15));
                         label.setTextFill(Color.RED);
                     }
