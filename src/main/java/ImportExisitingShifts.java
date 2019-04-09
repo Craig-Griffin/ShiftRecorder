@@ -34,6 +34,7 @@ public class ImportExisitingShifts {
 
         System.out.println(initialShiftTimeStore);
 
+
         setCorrectedDateFormat();
         setCorrecteTimesFormat();
         makeCompleteDate();
@@ -138,7 +139,7 @@ public class ImportExisitingShifts {
 
             String startTime="";
             String finishTime="";
-            String[]  startAndFinish = new String[2] ;
+
 
 
             for(String time : initialShiftTimeStore){
@@ -166,6 +167,7 @@ public class ImportExisitingShifts {
                 startTime = convertTo24Hour(tokens[0]);
                 finishTime = convertTo24Hour(furtherSplit[0]);
 
+                String[]  startAndFinish = new String[2] ;
                 startAndFinish[0] = startTime;
                 startAndFinish[1] = finishTime;
 
@@ -238,10 +240,11 @@ public class ImportExisitingShifts {
 
 
 
+
            for(int i=0; i<correctedDateFormat.size(); i++){
                String[] correct = new String[2];
-               correct[0] = correctedDateFormat.get(i) + " " + correcteTimesFormat.get(1)[0];
-               correct[1] = correctedDateFormat.get(i) + " " + correcteTimesFormat.get(1)[1];
+               correct[0] = correctedDateFormat.get(i) + " " + correcteTimesFormat.get(i)[0];
+               correct[1] = correctedDateFormat.get(i) + " " + correcteTimesFormat.get(i)[1];
 
 
 

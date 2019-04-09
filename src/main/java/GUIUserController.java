@@ -60,7 +60,7 @@ public class GUIUserController extends Application {
 
            upcomingShiftsVB.setAlignment(Pos.BASELINE_RIGHT);
 
-            Text welcome = new Text("This Weeks Shifts. (w/c: " + shiftsModel.dateFormatedForGUI()+")");
+            Text welcome = new Text("This Weeks Shifts (w/c: " + shiftsModel.dateFormatedForGUI()+")");
             Text empty = new Text(" ");
             welcome.setTextAlignment(TextAlignment.LEFT );
             welcome.setFont(Font.font ("Verdana", 20));
