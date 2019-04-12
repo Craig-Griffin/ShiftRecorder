@@ -209,7 +209,7 @@ public class ShiftsModel {
         return weekStartsAL.get(i-1);
     }
 
-    public Date getCurrentWeekMondayTest(int counter){
+    public Date getCurrentWeekMondayAdaptable(int offset){
 
         Date current = new Date();
         ArrayList<Date> weekStartsAL = loadWeekStarts();
@@ -219,7 +219,9 @@ public class ShiftsModel {
             i++;
         }
 
-        return weekStartsAL.get(i-counter);
+        i--;
+
+        return weekStartsAL.get(i-offset);
     }
 
 
@@ -324,7 +326,7 @@ public class ShiftsModel {
         }
     }
 
-    public String dateFormatedForGUI(){
+    public String dateFormatedForGUI(int offset){
         ArrayList<Date> weekStarts = new ArrayList<>();
 
         ShiftModel startDate = new  ShiftModel("27-Mar-2017 16:00:00","27-Mar-2017 20:00:00");
@@ -351,9 +353,14 @@ public class ShiftsModel {
             i++;
         }
 
-        i=i-1;
+        i--;
 
-        String goodFormat = "" + weekStarts.get(i).getDate()+"/"+(weekStarts.get(i).getMonth()+1)+"/19";
+        i = i - offset;
+
+        String year = ""+weekStarts.get(i).getYear();
+        year = year.substring(1,year.length());
+
+        String goodFormat = "" + weekStarts.get(i).getDate()+"/"+(weekStarts.get(i).getMonth()+1)+"/"+year;
 
         return goodFormat;
 
