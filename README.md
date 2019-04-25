@@ -24,10 +24,10 @@ Purpose of this sprint in to create the basic machinery to store shift informati
 
 ##### Sprint Two Road Map
 
-- [ ] Update the weeks shifts as a new is added through the interface
-- [ ] View previous weeks shifts and next week’s shifts
+- [x] Update the weeks shifts as a new is added through the interface
+- [x] View previous weeks shifts and next week’s shifts
 - [ ] Remove a shift
 - [ ] Add functionality to view all shifts option in drop down menu 
 - [ ] Add refresh functionality to File drop down menu
-- [ ] Put a line through shifts that have already been done
+- [x] Put a line through shifts that have already been done
 

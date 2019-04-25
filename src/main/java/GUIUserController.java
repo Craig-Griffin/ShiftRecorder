@@ -30,6 +30,7 @@ public class GUIUserController extends Application {
         private Date weekStart = shiftsModel.getCurrentWeekMondayAdaptable(selectedWeek);
         private Text welcome;
         private boolean furthestPoint = false;
+        private boolean dateToggle = false;
 
     Text mon;
     Text tue;
@@ -71,7 +72,7 @@ public class GUIUserController extends Application {
             vb.getChildren().add(emp);
 
             vb.getChildren().add(mainHB);
-            mainHB.setSpacing(200);
+            mainHB.setSpacing(150);
             mainHB.getChildren().addAll(vbLeft,buildWorkingWeek());
             introText(vbLeft );
             EnterShift(vbLeft );
@@ -87,6 +88,54 @@ public class GUIUserController extends Application {
 
         public static void main(String args[]){
         launch(args);
+    }
+
+
+
+    public void setValidWeekText(){
+            if(dateToggle){
+                mon.setText("Monday "+(weekStart.getDate()+1)+addDateEnd((weekStart.getDate()+1))+": "+ shiftsModel.splitIntoWeeks().get(weekStart).get(0));
+                tue.setText("Tuesday "+(weekStart.getDate()+2)+addDateEnd((weekStart.getDate()+2))+": "+shiftsModel.splitIntoWeeks().get(weekStart).get(1));
+                wed.setText("Wednesday "+(weekStart.getDate()+3)+addDateEnd((weekStart.getDate()+3))+": "+shiftsModel.splitIntoWeeks().get(weekStart).get(2));
+                thu.setText("Thursday "+(weekStart.getDate()+4)+addDateEnd((weekStart.getDate()+4))+": "+shiftsModel.splitIntoWeeks().get(weekStart).get(3));
+                fri.setText("Friday "+(weekStart.getDate()+5)+addDateEnd((weekStart.getDate()+5))+": "+shiftsModel.splitIntoWeeks().get(weekStart).get(4));
+                sat.setText("Saturday "+(weekStart.getDate()+6)+addDateEnd((weekStart.getDate()+6))+": "+shiftsModel.splitIntoWeeks().get(weekStart).get(5));
+                sun.setText("Sunday "+(weekStart.getDate()+7)+addDateEnd((weekStart.getDate()+7))+": "+shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+
+
+            }else {
+                mon.setText("Monday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(0));
+                tue.setText("Tuesday:   " + shiftsModel.splitIntoWeeks().get(weekStart).get(1));
+                wed.setText("Wednesday: " + shiftsModel.splitIntoWeeks().get(weekStart).get(2));
+                thu.setText("Thursday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(3));
+                fri.setText("Friday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(4));
+                sat.setText("Saturday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(5));
+                sun.setText("Sunday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+            }
+
+    }
+
+    public void setOFFweekText(){
+
+        if(dateToggle) {
+            mon.setText("Monday "+(weekStart.getDate()+1)+addDateEnd((weekStart.getDate()+1))+": OFF ");
+            tue.setText("Tuesday "+(weekStart.getDate()+2)+addDateEnd((weekStart.getDate()+2))+": OFF  ");
+            wed.setText("Wednesday "+(weekStart.getDate()+3)+addDateEnd((weekStart.getDate()+3))+": OFF ");
+            thu.setText("Thursday "+(weekStart.getDate()+4)+addDateEnd((weekStart.getDate()+4))+": OFF ");
+            fri.setText("Friday "+(weekStart.getDate()+5)+addDateEnd((weekStart.getDate()+5))+": OFF ");
+            sat.setText("Saturday "+(weekStart.getDate()+6)+addDateEnd((weekStart.getDate()+6))+": OFF ");
+            sun.setText("Sunday "+(weekStart.getDate()+7)+addDateEnd((weekStart.getDate()+7))+": OFF ");
+        }
+        else {
+            mon.setText("Monday: OFF");
+            tue.setText("Tuesday: OFF");
+            wed.setText("Wednesday: OFF");
+            thu.setText("Thursday: OFF");
+            fri.setText("Friday: OFF");
+            sat.setText("Saturday: OFF");
+            sun.setText("Sunday: OFF");
+        }
+
     }
 
 
@@ -124,24 +173,22 @@ public class GUIUserController extends Application {
         Label label = new Label();
 
         Label emp = new Label("");
-
-        mon = createWeekdayText("Monday "+weekStart.getDate()+addDateEnd(weekStart.getDay())+":    "+  shiftsModel.splitIntoWeeks().get(weekStart).get(0));
-        tue = createWeekdayText("Tuesday:   "+ shiftsModel.splitIntoWeeks().get(weekStart).get(1));
-        wed = createWeekdayText("Wednesday: " + shiftsModel.splitIntoWeeks().get(weekStart).get(2));
-        thu = createWeekdayText("Thursday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(3));
-        fri = createWeekdayText("Friday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(4));
-        sat = createWeekdayText("Saturday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(5));
-        sun = createWeekdayText("Sunday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(6));
-
         HashMap<Integer, Text> forStrikeThrough = new HashMap<>();
+        mon = createWeekdayText("Monday " );
+        tue = createWeekdayText("Tuesday:   " );
+        wed = createWeekdayText("Wednesday: ");
+        thu = createWeekdayText("Thursday:  " );
+        fri = createWeekdayText("Friday:    " );
+        sat = createWeekdayText("Saturday:  " );
+        sun = createWeekdayText("Sunday:    ");
 
-        mon.setText("Monday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(0));
-        tue.setText("Tuesday:   " +shiftsModel.splitIntoWeeks().get(weekStart).get(1));
-        wed.setText("Wednesday: " +shiftsModel.splitIntoWeeks().get(weekStart).get(2));
-        thu.setText("Thursday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(3));
-        fri.setText("Friday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(4));
-        sat.setText("Saturday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(5));
-        sun.setText("Sunday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+        try {
+            setValidWeekText();
+        }catch(NullPointerException ex){
+            setOFFweekText();
+        }
+
+
 
 
         forStrikeThrough.put(weekStart.getDate(), mon);
@@ -189,17 +236,13 @@ public class GUIUserController extends Application {
                 weekStart = shiftsModel.getCurrentWeekMondayAdaptable(selectedWeek);
                 welcome.setText("Shifts for w/c: " + shiftsModel.dateFormatedForGUI(selectedWeek));
 
-                mon.setText("Monday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(0));
-                tue.setText("Tuesday:   " +shiftsModel.splitIntoWeeks().get(weekStart).get(1));
-                wed.setText("Wednesday: " +shiftsModel.splitIntoWeeks().get(weekStart).get(2));
-                thu.setText("Thursday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(3));
-                fri.setText("Friday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(4));
-                sat.setText("Saturday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(5));
-                sun.setText("Sunday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+                setValidWeekText();
 
                 label.setText("Previous week loaded");
                 label.setFont(Font.font("Verdana", 15));
                 label.setTextFill(Color.GREEN);
+
+
             }
         };
 
@@ -218,13 +261,7 @@ public class GUIUserController extends Application {
                     welcome.setText("Shifts for w/c: " + shiftsModel.dateFormatedForGUI(selectedWeek));
 
 
-                    mon.setText("Monday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(0));
-                    tue.setText("Tuesday:   " + shiftsModel.splitIntoWeeks().get(weekStart).get(1));
-                    wed.setText("Wednesday: " + shiftsModel.splitIntoWeeks().get(weekStart).get(2));
-                    thu.setText("Thursday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(3));
-                    fri.setText("Friday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(4));
-                    sat.setText("Saturday:  " + shiftsModel.splitIntoWeeks().get(weekStart).get(5));
-                    sun.setText("Sunday:    " + shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+                    setValidWeekText();
 
                     label.setText("Previous week loaded");
                     label.setFont(Font.font("Verdana", 15));
@@ -236,13 +273,7 @@ public class GUIUserController extends Application {
                 label.setFont(Font.font("Verdana", 15));
                 label.setTextFill(Color.RED);
 
-                mon.setText("Monday: Unknown");
-                tue.setText("Tuesday: Unknown");
-                wed.setText("Wednesday: Unknown");
-                thu.setText("Thursday: Unknown");
-                fri.setText("Friday: Unknown");
-                sat.setText("Saturday: Unknown");
-                sun.setText("Sunday: Unknown");
+                setOFFweekText();
 
             }
 
@@ -260,13 +291,14 @@ public class GUIUserController extends Application {
 
                 HashMap<Integer, Text> forStrikeThrough = new HashMap<>();
 
-                mon.setText("Monday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(0));
-                tue.setText("Tuesday:   " +shiftsModel.splitIntoWeeks().get(weekStart).get(1));
-                wed.setText("Wednesday: " +shiftsModel.splitIntoWeeks().get(weekStart).get(2));
-                thu.setText("Thursday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(3));
-                fri.setText("Friday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(4));
-                sat.setText("Saturday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(5));
-                sun.setText("Sunday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+                try{
+                    setValidWeekText();
+
+                }catch(NullPointerException ex){
+                    setOFFweekText();
+
+                }
+
 
 
                 forStrikeThrough.put(weekStart.getDate(), mon);
@@ -358,9 +390,13 @@ public class GUIUserController extends Application {
         moneyEarned .setFont(Font.font ("Verdana", 15));
         moneyEarned .setFill(Color.BLACK);
 
-        Text totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours\n");
+        Text totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours");
         totalTime .setFont(Font.font ("Verdana", 15));
         totalTime .setFill(Color.BLACK);
+
+        Text expectedPay = new Text("This Months Expected Pay: " + shiftsModel.getTotalTimeWorked() + " Hours");
+        expectedPay .setFont(Font.font ("Verdana", 15));
+        expectedPay .setFill(Color.BLACK);
 
         Text addShiftTxt = new Text("\nAdd a New Shift...");
         addShiftTxt.setTextAlignment(TextAlignment.CENTER );
@@ -371,6 +407,7 @@ public class GUIUserController extends Application {
         vb.getChildren().add(welcome);
         vb.getChildren().add(moneyEarned);
         vb.getChildren().add(totalTime);
+        vb.getChildren().add(expectedPay);
         vb.getChildren().add(addShiftTxt);
     }
 
@@ -524,13 +561,7 @@ public class GUIUserController extends Application {
         EventHandler<ActionEvent> eventUpdate = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                mon.setText("Monday "+(weekStart.getDate()+1)+addDateEnd((weekStart.getDate()+1))+": "+ shiftsModel.splitIntoWeeks().get(weekStart).get(0));
-                tue.setText("Tuesday:   " +shiftsModel.splitIntoWeeks().get(weekStart).get(1));
-                wed.setText("Wednesday: " +shiftsModel.splitIntoWeeks().get(weekStart).get(2));
-                thu.setText("Thursday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(3));
-                fri.setText("Friday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(4));
-                sat.setText("Saturday:  " +shiftsModel.splitIntoWeeks().get(weekStart).get(5));
-                sun.setText("Sunday:    " +shiftsModel.splitIntoWeeks().get(weekStart).get(6));
+               setValidWeekText();
 
                 label.setText("Successfully Updated");
                 label.setFont(Font.font("Verdana", 15));
@@ -560,8 +591,11 @@ public class GUIUserController extends Application {
     public Menu createFileMenu(){
         Menu menuFile = new Menu("File");
         MenuItem exit = new MenuItem("Exit");
-        menuFile.getItems().add(exit);
+        CheckMenuItem checkMenuItem = new CheckMenuItem("Toggle date");
 
+
+        menuFile.getItems().add(exit);
+        menuFile.getItems().add(checkMenuItem);
 
         EventHandler<ActionEvent> eventExit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e)
@@ -570,7 +604,31 @@ public class GUIUserController extends Application {
             }
         };
 
+        EventHandler<ActionEvent> eventToggle = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e)
+            {
+                if(checkMenuItem.isSelected()){
+                    dateToggle = true;
+                    try{
+                        setValidWeekText();
+                    } catch( NullPointerException ex){
+                        setOFFweekText();
+                    }
+
+                }
+                else{
+                    dateToggle = false;
+                    try{
+                        setValidWeekText();
+                    } catch( NullPointerException ex){
+                        setOFFweekText();
+                    }
+                }
+            }
+        };
+
         exit.setOnAction(eventExit);
+        checkMenuItem.setOnAction(eventToggle);
         return menuFile;
     }
 

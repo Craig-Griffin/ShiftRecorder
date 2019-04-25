@@ -108,38 +108,40 @@ public class ShiftsModel {
 
         int  counter = getClosestMonday(weekStartsAL, currentDate);
 
-        while (max != allShifts.size()) {
+        try {
+            while (max != allShifts.size()) {
 
                 ArrayList<ShiftModel> currentWeek = new ArrayList<>();
 
                 Date weekStart = weekStartsAL.get(counter);
-                Date NextWeekStart = weekStartsAL.get(counter+1);
+                Date NextWeekStart = weekStartsAL.get(counter + 1);
 
-            if(currentDate.equals(NextWeekStart))    {
-                currentWeek.add(allShifts.get(max));
-            }
+                if (currentDate.equals(NextWeekStart)) {
+                    currentWeek.add(allShifts.get(max));
+                }
 
-            while (currentDate.before(NextWeekStart )) {
+                while (currentDate.before(NextWeekStart)) {
 
                     currentWeek.add(allShifts.get(max));
 
                     max++;
-                    if (currentDate.after(NextWeekStart ) || max == allShifts.size()) {
+                    if (currentDate.after(NextWeekStart) || max == allShifts.size()) {
                         break;
                     }
                     currentDate = allShifts.get(max).getDateObject();
 
 
-
                 }
 
 
-            splitToWeeks.put(weekStartsAL.get(counter),indentifyDayOfWeek(currentWeek));
+                splitToWeeks.put(weekStartsAL.get(counter), indentifyDayOfWeek(currentWeek));
                 counter++;
 
 
-
             }
+        }catch(NullPointerException ex){
+            System.out.println("test") ;
+        }
         return splitToWeeks;
     }
 
@@ -261,10 +263,6 @@ public class ShiftsModel {
 
         }
         return weekStarts;
-
-
-
-
     }
 
     /**
@@ -326,6 +324,12 @@ public class ShiftsModel {
         }
     }
 
+
+    /**
+     * Method which will take a string and format it into a desirable way for the GUI
+     * @param offset
+     * @return goodFormat for the GUI
+     */
     public String dateFormatedForGUI(int offset){
         ArrayList<Date> weekStarts = new ArrayList<>();
 
