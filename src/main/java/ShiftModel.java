@@ -2,7 +2,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class ShiftModel {
+public class ShiftModel extends Date {
 
     private String startFormat;
     private String finishFormat;
@@ -37,10 +37,6 @@ public class ShiftModel {
         }
     }
 
-
-    public String getDate(){
-        return startTime.toString();
-    }
 
     public Date getDateObject(){
         return startTime;
@@ -107,6 +103,23 @@ public class ShiftModel {
 
     public String getFinishFormat() {
         return finishFormat;
+    }
+
+
+
+    //This fucked because it does not take into consideration that months have different ammounts of days fucksake
+    //This some how needs to make a month into consideration
+    public int getDateImproved(int input){
+
+        if(input==31){
+            return input - 30;
+        }
+        if(input>=32){
+            return input -30;
+        }
+        return input;
+
+
     }
 }
 
