@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ShiftRecorderTest">
+    <output-path>$PROJECT_DIR$/out/artifacts/ShiftRecorderTest</output-path>
+    <root id="archive" name="ShiftRecorderTest.jar">
+      <element id="module-output" name="shiftRecorder" />
+    </root>
+  </artifact>
+</component>
