@@ -16,23 +16,12 @@ public class GuiHelpers {
 
 
 
-    public GuiHelpers(boolean dateToggle, Text mon, Text tue, Text wed, Text thu, Text fri, Text sat, Text sun, ShiftsModel shiftsModel, ShiftModel weekStart){
-
-        this.dateToggle = dateToggle;
-        this.mon = mon;
-        this.tue = tue;
-        this.wed = wed;
-        this.thu = thu;
-        this.fri = fri;
-        this.sat = sat;
-        this.sun =sun;
-        this.shiftsModel = shiftsModel;
-        this.weekStart = weekStart;
+    public GuiHelpers(){
 
     }
 
 
-    public void setValidWeekText() {
+    public void setValidWeekText(boolean dateToggle, Text mon, Text tue, Text wed, Text thu, Text fri, Text sat, Text sun, ShiftsModel shiftsModel, ShiftModel weekStart) {
 
         if (dateToggle) {
             mon.setText("Monday " + (weekStart.getDateImproved(weekStart.getDateObject().getDate() + 1)) + addDateEnd((weekStart.getDateImproved(weekStart.getDateObject().getDate() + 1))) + ": " + shiftsModel.splitIntoWeeks().get(weekStart.getDateObject()).get(0));
@@ -57,7 +46,7 @@ public class GuiHelpers {
     }
 
 
-    public void setOFFweekText() {
+    public void setOFFweekText(boolean dateToggle, Text mon, Text tue, Text wed, Text thu, Text fri, Text sat, Text sun, ShiftsModel shiftsModel, ShiftModel weekStart) {
 
         if (dateToggle) {
             mon.setText("Monday " + weekStart.getDateImproved(weekStart.getDateObject().getDate() + 1) + addDateEnd((weekStart.getDateImproved(weekStart.getDateObject().getDate() + 1))) + ": OFF ");

@@ -50,7 +50,7 @@ public class GUIUserController extends Application {
     // launch the application
     public void start(Stage s) {
 
-
+        guiHelpers = new GuiHelpers();
         s.setTitle("Java Shift Controller");
 
         HBox mainHB = new HBox();
@@ -140,16 +140,16 @@ public class GUIUserController extends Application {
         sat = createWeekdayText("Saturday:  ");
         sun = createWeekdayText("Sunday:    ");
 
-        guiHelpers = new GuiHelpers(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
+
 
 
         mon.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> mon.setStrikethrough(true));
 
 
         try {
-            guiHelpers.setValidWeekText();
+            guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
         } catch (NullPointerException ex) {
-            guiHelpers.setOFFweekText();
+            guiHelpers.setOFFweekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
         }
 
 
@@ -199,7 +199,7 @@ public class GUIUserController extends Application {
                 weekStart = shiftsModel.getCurrentWeekMondayAdaptable(selectedWeek);
                 welcome.setText("Shifts for w/c: " + shiftsModel.dateFormatedForGUI(selectedWeek));
 
-                guiHelpers.setValidWeekText();
+                guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
 
                 label.setText("Previous week loaded");
                 label.setFont(Font.font("Verdana", 15));
@@ -224,7 +224,7 @@ public class GUIUserController extends Application {
                     welcome.setText("Shifts for w/c: " + shiftsModel.dateFormatedForGUI(selectedWeek));
 
 
-                    guiHelpers.setValidWeekText();
+                    guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
 
                     label.setText("Previous week loaded");
                     label.setFont(Font.font("Verdana", 15));
@@ -235,7 +235,7 @@ public class GUIUserController extends Application {
                     label.setFont(Font.font("Verdana", 15));
                     label.setTextFill(Color.RED);
 
-                    guiHelpers.setOFFweekText();
+                    guiHelpers.setOFFweekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
 
                 }
 
@@ -254,10 +254,10 @@ public class GUIUserController extends Application {
                 HashMap<Integer, Text> forStrikeThrough = new HashMap<>();
 
                 try {
-                    guiHelpers.setValidWeekText();
+                    guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
 
                 } catch (NullPointerException ex) {
-                    guiHelpers.setOFFweekText();
+                    guiHelpers.setOFFweekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
 
                 }
 
@@ -504,7 +504,7 @@ public class GUIUserController extends Application {
         EventHandler<ActionEvent> eventUpdate = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                guiHelpers.setValidWeekText();
+                guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
 
                 label.setText("Successfully Updated");
                 label.setFont(Font.font("Verdana", 15));
@@ -548,17 +548,17 @@ public class GUIUserController extends Application {
                 if (checkMenuItem.isSelected()) {
                     dateToggle = true;
                     try {
-                        guiHelpers.setValidWeekText();
+                        guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
                     } catch (NullPointerException ex) {
-                        guiHelpers.setOFFweekText();
+                        guiHelpers.setOFFweekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
                     }
 
                 } else {
                     dateToggle = false;
                     try {
-                        guiHelpers.setValidWeekText();
+                        guiHelpers.setValidWeekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
                     } catch (NullPointerException ex) {
-                        guiHelpers.setOFFweekText();
+                        guiHelpers.setOFFweekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
                     }
                 }
             }
