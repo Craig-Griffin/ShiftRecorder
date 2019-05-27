@@ -45,6 +45,11 @@ public class GUIUserController extends Application {
 
 
     private static final String USERNAME = "Craig";
+    private Text moneyEarned;
+    private Text totalTime;
+    private Text expectedPay;
+    private Text expectedHours;
+    private Text addShiftTxt;
 
 
     // launch the application
@@ -152,24 +157,26 @@ public class GUIUserController extends Application {
             guiHelpers.setOFFweekText(dateToggle,mon,tue,wed,thu,fri,sat,sun,shiftsModel,weekStart);
         }
 
-
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate()), mon);
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate() + 1), tue);
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate() + 2), wed);
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate() + 3), thu);
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate() + 4), fri);
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate() + 5), sat);
-        forStrikeThrough.put(weekStart.getDateImproved(weekStart.getDate() + 6), sun);
+        ShiftModel tempWeekStart = shiftsModel.getCurrentWeekMondayAdaptable(1);
+        forStrikeThrough.put(tempWeekStart.getDate(), mon);
+        forStrikeThrough.put(tempWeekStart.getDate() + 1, tue);
+        forStrikeThrough.put(tempWeekStart.getDate() + 2, wed);
+        forStrikeThrough.put(tempWeekStart.getDate() + 3, thu);
+        forStrikeThrough.put(tempWeekStart.getDate() + 4, fri);
+        forStrikeThrough.put(tempWeekStart.getDate() + 5, sat);
+        forStrikeThrough.put(tempWeekStart.getDate() + 6, sun);
 
         Date currentDate = new Date();
 
         for (int x : forStrikeThrough.keySet()) {
 
-            if (x  <= currentDate.getDate())
+            if (x+1  < currentDate.getDate())
             {
                 forStrikeThrough.get(x).setStrikethrough(true);
-                System.out.println(x + "  " + currentDate.getDate());
+
             }
+
+            System.out.println(x + "  " + currentDate.getDate());
 
         }
 
@@ -308,8 +315,6 @@ public class GUIUserController extends Application {
 
     }
 
-
-
     public Text createWeekdayText(String nameWeekDay) {
         Text weekday = new Text(nameWeekDay);
         weekday.setTextAlignment(TextAlignment.CENTER);
@@ -319,29 +324,29 @@ public class GUIUserController extends Application {
         return weekday;
     }
 
-
     public void introText(VBox vb) {
         Text welcome = new Text("Welcome Back " + USERNAME + "...");
         welcome.setFont(Font.font("Verdana", 20));
         welcome.setFill(Color.BLUE);
 
-        Text moneyEarned = new Text("\nTotal Earned: £" + shiftsModel.getTotalAmountEarned());
+         moneyEarned = new Text("\nTotal Earned: £" + shiftsModel.getTotalAmountEarned());
         moneyEarned.setFont(Font.font("Verdana", 15));
         moneyEarned.setFill(Color.BLACK);
 
-        Text totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours");
+         totalTime = new Text("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours");
         totalTime.setFont(Font.font("Verdana", 15));
         totalTime.setFill(Color.BLACK);
 
-        Text expectedPay = new Text("This Months Expected Pay: £" + shiftsModel.calculateExpectedPay("08-Apr-2019 16:00:00","05-May-2019 16:00:00"));
+         expectedPay = new Text("This Months Expected Pay: £" + shiftsModel.calculateExpectedPay("08-Apr-2019 16:00:00","05-May-2019 16:00:00"));
         expectedPay.setFont(Font.font("Verdana", 15));
         expectedPay.setFill(Color.BLACK);
 
-        Text expectedHours = new Text("This Months Expected Hours: " + shiftsModel.calculateExpectedHours("08-Apr-2019 16:00:00","05-May-2019 16:00:00")+ " Hours");
+        
+         expectedHours = new Text("This Months Expected Hours: " + shiftsModel.calculateExpectedHours("08-Apr-2019 16:00:00","05-May-2019 16:00:00")+ " Hours");
         expectedHours.setFont(Font.font("Verdana", 15));
         expectedHours.setFill(Color.BLACK);
 
-        Text addShiftTxt = new Text("\nAdd a New Shift...");
+         addShiftTxt = new Text("\nAdd a New Shift...");
         addShiftTxt.setTextAlignment(TextAlignment.CENTER);
         addShiftTxt.setFont(Font.font("Verdana", 20));
         addShiftTxt.setFill(Color.BLUE);
@@ -517,7 +522,6 @@ public class GUIUserController extends Application {
 
     }
 
-
     public MenuBar createMenuBar() {
         MenuBar mb = new MenuBar();
         mb.getMenus().add(createFileMenu());
@@ -532,10 +536,12 @@ public class GUIUserController extends Application {
         Menu menuFile = new Menu("File");
         MenuItem exit = new MenuItem("Exit");
         CheckMenuItem checkMenuItem = new CheckMenuItem("Toggle date");
+        MenuItem updateStats = new MenuItem("Update Statistics");
 
 
         menuFile.getItems().add(exit);
         menuFile.getItems().add(checkMenuItem);
+        menuFile.getItems().add(updateStats);
 
         EventHandler<ActionEvent> eventExit = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
@@ -564,8 +570,19 @@ public class GUIUserController extends Application {
             }
         };
 
+        EventHandler<ActionEvent> eventUpdateStats = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+                moneyEarned.setText("\nTotal Earned: £" + shiftsModel.getTotalAmountEarned());
+                totalTime.setText("Total Time: " + shiftsModel.getTotalTimeWorked() + " Hours");
+                expectedPay.setText("This Months Expected Pay: £" + shiftsModel.calculateExpectedPay("08-Apr-2019 16:00:00","05-May-2019 16:00:00"));
+                expectedHours.setText("This Months Expected Hours: " + shiftsModel.calculateExpectedHours("08-Apr-2019 16:00:00","05-May-2019 16:00:00")+ " Hours");
+                
+            }
+        };
+
         exit.setOnAction(eventExit);
         checkMenuItem.setOnAction(eventToggle);
+        updateStats.setOnAction(eventUpdateStats);
         return menuFile;
     }
 
@@ -587,9 +604,17 @@ public class GUIUserController extends Application {
 
                 // Traditional way to get the response value.
                 Optional<String> result = dialog.showAndWait();
-                if (result.isPresent()) {
-                    System.out.println("Your name: " + result.get());
-                }
+
+                    if (result.isPresent()) {
+
+                        String date = result.get();
+                        System.out.println(date);
+
+                        shiftsModel.removeShift(date);
+                    }
+
+
+
 
 
             }
@@ -672,6 +697,5 @@ public class GUIUserController extends Application {
         return menuAbout;
 
     }
-
 
 }

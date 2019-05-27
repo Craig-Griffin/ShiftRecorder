@@ -343,6 +343,57 @@ public class ShiftsModel{
     }
 
 
+   public boolean removeShift(String shift) {
+
+        ArrayList<ShiftModel> temp = new ArrayList<>();
+        String tempStart;
+        String tempEnd;
+
+        File f = new File(SHIFT_FILE);
+        File tempFile = new File("temp_" + SHIFT_FILE);
+        if (f.length() != 0) {
+
+            try {
+                FileReader fileReader = new FileReader(SHIFT_FILE);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                String line = null;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    String[] tokens = line.split(" ");
+                    if(!tokens[0].equals(shift)){
+
+                        try {
+                            FileWriter fr = new FileWriter("temp_" + SHIFT_FILE, true);
+                            BufferedWriter bw = new BufferedWriter(fr);
+                            PrintWriter pr = new PrintWriter(bw);
+                            pr.println(line);
+                            pr.close();
+                            bw.close();
+                            fr.close();
+                        } catch (FileNotFoundException ex) {
+                            System.out.println("Error");
+                        } catch (IOException ex) {
+                            System.out.println("Error");
+                        }
+
+                    }
+
+                    System.out.println(tokens[0]);
+
+
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        tempFile.renameTo(f);
+
+        return true;
+    }
+
+
     /**
      * Write new shift data to the file
      * @param shift

@@ -24,10 +24,20 @@ Purpose of this sprint in to create the basic machinery to store shift informati
 
 ##### Sprint Two Road Map
 
+Most of sprint two completed. Still very buggy and needs more testing.
+
 - [x] Update the weeks shifts as a new is added through the interface
 - [x] View previous weeks shifts and next week’s shifts
 - [ ] Remove a shift
-- [ ] Add functionality to view all shifts option in drop down menu 
-- [ ] Add refresh functionality to File drop down menu
+- [x] Add functionality to view all shifts option in drop down menu 
+- [x] Add refresh functionality to File drop down menu
 - [x] Put a line through shifts that have already been done
+
+
+![Screenshot of app after sprint one](/Screenshots/sprint2.png "Sprint One Screenshot")
+
+##### Sprint Three Road Map
+
+Bugging and testing to be done in this sprint.
+
 
