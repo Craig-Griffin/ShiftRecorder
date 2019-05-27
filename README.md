@@ -34,7 +34,7 @@ Most of sprint two completed. Still very buggy and needs more testing.
 - [x] Put a line through shifts that have already been done
 
 
-![Screenshot of app after sprint one](/Screenshots/sprint2.bmp "Sprint One Screenshot")
+![Screenshot of app after sprint one](/Screenshots/sprint2.png "Sprint One Screenshot")
 
 ##### Sprint Three Road Map
 
